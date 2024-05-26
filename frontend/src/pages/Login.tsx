@@ -48,7 +48,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/login', { email, password });
+      const response = await axios.post('https://malefic.onrender.com//api/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/products'); // Redirect to a protected route after login
     } catch (err) {
