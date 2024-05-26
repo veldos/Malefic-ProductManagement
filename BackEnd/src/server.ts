@@ -17,7 +17,7 @@ app.use(urlencoded({
     extended:true
 }))
 app.use(cors({
-    origin: 'https://master--malefic.netlify.app/', // your frontend server's URL
+    origin: 'http://localhost:3000', // your frontend server's URL
     credentials: true
 }));
 app.use(json());
