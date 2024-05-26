@@ -11,7 +11,7 @@ dotenv.config();
 
 
 const app = express();
-const Port:number = 8000;
+const port = process.env.PORT || 8000;
 
 app.use(urlencoded({
     extended:true
@@ -34,6 +34,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error('error i don t know why ', err);
     res.status(500).send('Something went wrong!');
 });
-app.listen(Port, ()=>{
-    console.log(`Application running on ${Port}`);
+app.listen(port, ()=>{
+    console.log(`Application running on ${port}`);
 })
