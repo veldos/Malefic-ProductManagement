@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -48,7 +48,7 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:10000/api/auth/signup', { email, password });
+      const response = await axiosInstance.post('/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/products'); // Redirect to a protected route after login
     } catch (err) {
