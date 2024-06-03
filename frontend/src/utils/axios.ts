@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://malefic.onrender.com/api', // Replace with your backend API URL
+  baseURL: 'http://localhost:10000/api', // Replace with your backend API URL
 });
 
 axiosInstance.interceptors.request.use(
