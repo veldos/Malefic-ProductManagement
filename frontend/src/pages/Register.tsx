@@ -35,7 +35,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/signup', { email, password });
+      const response = await axios.post('http://localhost:10000/api/auth/signup', { email, password });
       console.log({ response });
       localStorage.setItem('token', response.data.token);
       navigate('/products'); // Redirect to login page after successful registration
