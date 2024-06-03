@@ -1,5 +1,5 @@
 import * as React from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const defaultTheme = createTheme({
   palette:{
@@ -35,7 +36,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:10000/api/auth/signup', { email, password });
+      const response = await axiosInstance.post('/auth/signup', { email, password });
       console.log({ response });
       localStorage.setItem('token', response.data.token);
       navigate('/products'); // Redirect to login page after successful registration
