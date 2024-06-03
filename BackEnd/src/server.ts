@@ -12,12 +12,15 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;
+console.log(`PORT from .env: ${process.env.PORT}`);
 
 app.use(urlencoded({
     extended:true
 }))
 app.use(cors({
-    origin: 'http://localhost:3000', // your frontend server's URL
+    origin: 'https://master--malefic.netlify.app', // My frontend server's URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 app.use(json());
