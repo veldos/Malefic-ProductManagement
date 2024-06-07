@@ -68,7 +68,7 @@ const ProductEditPage: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" style={{ padding: '70px' }}>
       <Typography variant="h4" gutterBottom>
         Edit Product
       </Typography>
