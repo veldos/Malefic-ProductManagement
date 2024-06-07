@@ -41,7 +41,7 @@ const CreateProduct: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" style={{ padding: '37px' }}>
       <Box mt={4}>
         <Typography variant="h4" gutterBottom>
           Create Product
