@@ -1,5 +1,4 @@
 import * as React from 'react';
-import axiosInstance from '../utils/axios';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import styled from 'styled-components';
 import Backgoudimage from '../images/Back.png'
+// import { useAuth } from '../utils/AuthContext';
+import axiosInstance from '../utils/axios';
 const Container = styled.div`
   height: 99vh;
   width: 100%; /* Ensures full width */
@@ -44,16 +45,19 @@ const Login: React.FC = () => {
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState('');
   const navigate = useNavigate();
-
+  // const { login } = useAuth();
+  
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const response = await axiosInstance.post('/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/products'); // Redirect to a protected route after login
-    } catch (err) {
-      setError('Invalid email or password');
-    }
+     try {
+       const response = await axiosInstance.post('/auth/login', { email, password });
+       localStorage.setItem('token', response.data.token);
+       navigate('/products'); // Redirect to a protected route after login
+     } catch (err) {
+       setError('Invalid email or password');
+     }
+  
+
   };
 
   return (
@@ -124,11 +128,6 @@ const Login: React.FC = () => {
               </Button>
               {error && <Typography color="error">{error}</Typography>}
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
                   <Link href="/register" variant="body2">
                     {"Don't have an account? Sign Up"}
