@@ -18,7 +18,7 @@ app.use(urlencoded({
     extended:true
 }))
 app.use(cors({
-    origin: 'https://66633d1382cd6c00a5c4ea1f--malefic.netlify.app', // My frontend server's URL
+    origin: 'https://maleficemporuim.netlify.app', // My frontend server's URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
