@@ -15,14 +15,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 
 const defaultTheme = createTheme({
-  palette:{
-    primary:{
+  palette: {
+    primary: {
       main: '#a3a4a7',
     }
   }
 });
 
 const Register: React.FC = () => {
+  const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
@@ -36,7 +37,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
-      const response = await axiosInstance.post('/auth/signup', { email, password });
+      const response = await axiosInstance.post('/auth/signup', { username, email, password });
       console.log({ response });
       localStorage.setItem('token', response.data.token);
       navigate('/products'); // Redirect to login page after successful registration
@@ -72,6 +73,18 @@ const Register: React.FC = () => {
           </Typography>
           <Box component="form" noValidate onSubmit={handleRegister} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
